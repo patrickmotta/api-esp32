@@ -8,7 +8,8 @@ const deviceDataSchema = new mongoose.Schema({
   },
   humidity: Number,
   temperature: Number,
-  doorStatus: String,
+  doorStatus: Boolean,
+  openDoor: Boolean,
   timestamp: { type: String }
 });
 
