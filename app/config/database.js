@@ -1,5 +1,6 @@
 // config/database.js
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const uri = "mongodb+srv://patrickramosmotta:rMABnuzebiKcwCmS@devices.cmyelda.mongodb.net/?retryWrites=true&w=majority";
 const connectDB = async () => {
   try {
@@ -11,4 +12,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

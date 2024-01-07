@@ -1,19 +1,19 @@
 // app/routes/deviceRoutes.js
-const express = require('express');
-const expressWs = require('express-ws');
-const deviceController = require('../controllers/deviceController');
-const userController = require('../controllers/userController');
+import express from 'express';
+import expressWs from 'express-ws';
+import { createDeviceData, updateDeviceData, getOpenDoor, openDoor } from '../controllers/deviceController.js';
+import {userDeviceWebsocket} from '../controllers/userController.js';
 
 
 const router = express.Router();
 expressWs(router);
 
 
-router.post('/device-data', deviceController.createDeviceData);
+router.post('/device-data', createDeviceData);
 // Rota para atualizar dados do dispositivo
-router.put('/device-data', deviceController.updateDeviceData);
-router.get('/device-data/status/openDoor', deviceController.getOpenDoor);
-router.post('/device-data/openDoor', deviceController.openDoor);
-router.ws('/user/devices/realTime', userController.deviceWebsocket)
+router.put('/device-data', updateDeviceData);
+router.get('/device-data/status/openDoor', getOpenDoor);
+router.post('/device-data/openDoor', openDoor);
+router.ws('/user/devices/realTime', userDeviceWebsocket)
 
-module.exports = router;
+export default router;

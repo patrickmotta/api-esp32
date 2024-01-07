@@ -1,9 +1,8 @@
-const { MongoClient } = require('mongodb');
-const { DeviceData } = require('../models/deviceData'); // Supondo que 'DeviceData' é o modelo do seu dispositivo
+import { MongoClient } from 'mongodb';
 let websocketClients = []; // Array para armazenar os clientes WebSocket conectados
 const uri = "mongodb+srv://patrickramosmotta:rMABnuzebiKcwCmS@devices.cmyelda.mongodb.net/?retryWrites=true&w=majority";
 
-exports.deviceWebsocket = async (ws, req) => {
+const userDeviceWebsocket = async (ws, req) => {
   console.log('Conexão WebSocket estabelecida');
 
   try {
@@ -35,3 +34,5 @@ exports.deviceWebsocket = async (ws, req) => {
     console.error('Erro ao conectar ao MongoDB:', error);
   }
 };
+
+export { userDeviceWebsocket }

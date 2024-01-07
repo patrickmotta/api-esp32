@@ -1,5 +1,6 @@
 // index.js
-const app = require('./app/config/express');
+import app from "./app/config/express.js";
+
 
 const PORT = process.env.PORT || 3000;
 

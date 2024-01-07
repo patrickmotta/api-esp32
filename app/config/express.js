@@ -1,18 +1,13 @@
 
-const express = require('express');
-const expressWs = require('express-ws');
-const bodyParser = require('body-parser');
-const deviceRoutes = require('../routes/deviceRoutes');
-const connectDB = require('./database');
+import express from 'express';
+import expressWs from 'express-ws';
+import bodyParser from'body-parser' ;
+import deviceRoutes from '../routes/deviceRoutes.js';
+import connectDB from './database.js';
 
 const app = express();
 expressWs(app);
 
-// Rota para lidar com a conexão WebSocket
-
-
-
-// Connect to MongoDB
 connectDB();
 
 // Middleware
@@ -21,4 +16,4 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', deviceRoutes);
 
-module.exports = app;
+export default app;

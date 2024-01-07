@@ -1,8 +1,7 @@
+import DeviceData from '../models/deviceData.js';
+import timestamp from '../services/timestamp.js';
 
-const DeviceData = require('../models/deviceData');
-const timestamp = require('../services/timestamp')
-
-exports.createDeviceData = async (req, res) => {
+const createDeviceData = async (req, res) => {
   try {
     const { deviceId, humidity, temperature, doorStatus } = req.body;
     const newDeviceData = new DeviceData({
@@ -18,8 +17,7 @@ exports.createDeviceData = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-exports.updateDeviceData = async (req, res) => {
+const updateDeviceData = async (req, res) => {
   try {
     const { deviceId, humidity, temperature, doorStatus } = req.body;
     // console.log(deviceId)
@@ -44,7 +42,7 @@ exports.updateDeviceData = async (req, res) => {
   }
 };
 
-exports.getOpenDoor = async (req, res) => {
+const getOpenDoor = async (req, res) => {
   try {
     const { deviceId } = req.query;
     console.log(req.query)
@@ -67,7 +65,7 @@ exports.getOpenDoor = async (req, res) => {
   }
 };
 
-exports.openDoor = async (req, res) => {
+const openDoor = async (req, res) => {
   try {
     const { deviceId, openDoor } = req.body;
     // console.log(deviceId)
@@ -87,3 +85,6 @@ exports.openDoor = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+
+export { createDeviceData, updateDeviceData, getOpenDoor, openDoor }
